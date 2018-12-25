@@ -1,0 +1,35 @@
+# Python rogram to find the SHA-1 message digest of a file
+
+# import hashlib module
+import hashlib
+
+def hash_file(filename):
+   """"This function returns the SHA-1 hash
+   of the file passed into it"""
+
+   # make a hash object
+   h = hashlib.sha1()
+
+
+   # open file for reading in binary mode
+   with open(filename,'rb') as file:
+
+       # loop till the end of the file
+       chunk = 0
+       while chunk != b'':
+           # read only 1024 bytes at a time
+           chunk = file.read(1024)
+           h.update(chunk)
+           print('checking')
+
+   # return the hex representation of digest
+   return h.hexdigest()
+filename = input("input fullpath filename: ")
+key = input("input sha1 code: ")
+if hash_file(filename)== key.lower():
+        print('complete file')
+else:
+        print('not complete file')
+        print(hash_file(filename))
+# sha1 : 277926A41B472EE38CA0B36ED8F2696356DCC98F
+# file : C:\Users\mdland\Downloads\eMule\Incoming\cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso
